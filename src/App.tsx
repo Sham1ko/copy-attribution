@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useCopyAttribution } from '../copy-attribution/src'
+import { useCopyAttribution } from 'copy-attribution'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      copy-attribution:
+        specifier: link:copy-attribution
+        version: link:copy-attribution
       react:
         specifier: ^19.2.5
         version: 19.2.5
