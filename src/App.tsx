@@ -1,26 +1,37 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { useCopyAttribution } from '../copy-attribution/src'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
-import { useCopyWithAttribution } from './hooks/useCopyWithAttribution'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  useCopyWithAttribution('Взято: из приммер.ком. Тест работает')
+  const articleRef = useRef<HTMLDivElement>(null)
+
+  useCopyAttribution(articleRef, {
+    append: () => `\n\nSource: ${window.location.href}\nDemo: local copy-attribution package`,
+    minLength: 12,
+  })
 
   return (
     <>
       <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
+        <div ref={articleRef}>
+          <div className="hero">
+            <img src={heroImg} className="base" width="170" height="179" alt="" />
+            <img src={reactLogo} className="framework" alt="React logo" />
+            <img src={viteLogo} className="vite" alt="Vite logo" />
+          </div>
           <h1>Get started</h1>
           <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+            Select and copy text inside this block to test the local{' '}
+            <code>copy-attribution</code> package.
+          </p>
+          <p>
+            The hook is imported via a relative path from{' '}
+            <code>../copy-attribution/src</code> and appends extra text to the
+            copied selection.
           </p>
         </div>
         <button
