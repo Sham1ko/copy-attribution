@@ -1,60 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
+import { useCopyWithAttribution } from './hooks/useCopyWithAttribution'
 import './App.css'
-
-function getSelectedText() {
-  const pageSelection = window.getSelection()?.toString()
-
-  if (pageSelection) {
-    return pageSelection
-  }
-
-  const activeElement = document.activeElement
-
-  if (
-    activeElement instanceof HTMLInputElement ||
-    activeElement instanceof HTMLTextAreaElement
-  ) {
-    const { selectionStart, selectionEnd, value } = activeElement
-
-    if (
-      selectionStart !== null &&
-      selectionEnd !== null &&
-      selectionStart !== selectionEnd
-    ) {
-      return value.slice(selectionStart, selectionEnd)
-    }
-  }
-
-  return ''
-}
 
 function App() {
   const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    const handleCopy = (event: ClipboardEvent) => {
-      const selectedText = getSelectedText().trim()
-
-      if (!selectedText || !event.clipboardData) {
-        return
-      }
-
-      const source = window.location.hostname || window.location.href
-      const attributedText = `${selectedText}\n\nВзято: из ${source}. Тест работает`
-
-      event.preventDefault()
-      event.clipboardData.setData('text/plain', attributedText)
-    }
-
-    document.addEventListener('copy', handleCopy)
-
-    return () => {
-      document.removeEventListener('copy', handleCopy)
-    }
-  }, [])
+  useCopyWithAttribution('Взято: из приммер.ком. Тест работает')
 
   return (
     <>
