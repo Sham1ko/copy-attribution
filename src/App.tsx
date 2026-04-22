@@ -1,8 +1,5 @@
-import { useRef, useState } from 'react'
-import {
-  useCopyAttribution,
-  useGlobalCopyAttribution,
-} from '../copy-attribution/src'
+import { useState } from 'react'
+import { useCopyAttribution } from '../copy-attribution/src'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -10,23 +7,17 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  const articleRef = useRef<HTMLDivElement>(null)
 
-  useGlobalCopyAttribution({
-    append: '\n\nGlobal mode: copied from the demo page',
-    minLength: 8,
-  })
-
-  useCopyAttribution(articleRef, {
+  useCopyAttribution({
     append: () =>
-      `\n\nSource: ${window.location.href}\nScoped mode: local copy-attribution package`,
-    minLength: 12,
+      `\n\nSource: ${window.location.href}\nGlobal mode: local copy-attribution package`,
+    minLength: 8,
   })
 
   return (
     <>
       <section id="center">
-        <div ref={articleRef}>
+        <div>
           <div className="hero">
             <img src={heroImg} className="base" width="170" height="179" alt="" />
             <img src={reactLogo} className="framework" alt="React logo" />
@@ -34,17 +25,12 @@ function App() {
           </div>
           <h1>Get started</h1>
           <p>
-            Select and copy text inside this block to test the local{' '}
+            Copy text anywhere on this page to test the local{' '}
             <code>copy-attribution</code> package.
           </p>
           <p>
-            This block uses scoped mode via <code>useCopyAttribution(ref)</code>.
-            Copied text here gets a source URL plus a scoped label.
-          </p>
-          <p>
-            Text copied anywhere else on the page uses{' '}
-            <code>useGlobalCopyAttribution()</code> and gets a simpler global
-            label.
+            The demo now uses a single global <code>useCopyAttribution()</code>{' '}
+            hook that appends the current page URL and a global label.
           </p>
         </div>
         <button
