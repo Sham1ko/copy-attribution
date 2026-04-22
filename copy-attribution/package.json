@@ -1,15 +1,15 @@
 {
   "name": "copy-attribution",
   "version": "0.0.1",
-  "description": "A small React hook that appends attribution text to copied text inside a target element.",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "description": "A small React hook that appends attribution text to copied text across the page.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "files": [
