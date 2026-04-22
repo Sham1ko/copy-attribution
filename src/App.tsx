@@ -1,5 +1,8 @@
 import { useRef, useState } from 'react'
-import { useCopyAttribution } from '../copy-attribution/src'
+import {
+  useCopyAttribution,
+  useGlobalCopyAttribution,
+} from '../copy-attribution/src'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -9,8 +12,14 @@ function App() {
   const [count, setCount] = useState(0)
   const articleRef = useRef<HTMLDivElement>(null)
 
+  useGlobalCopyAttribution({
+    append: '\n\nGlobal mode: copied from the demo page',
+    minLength: 8,
+  })
+
   useCopyAttribution(articleRef, {
-    append: () => `\n\nSource: ${window.location.href}\nDemo: local copy-attribution package`,
+    append: () =>
+      `\n\nSource: ${window.location.href}\nScoped mode: local copy-attribution package`,
     minLength: 12,
   })
 
@@ -29,9 +38,13 @@ function App() {
             <code>copy-attribution</code> package.
           </p>
           <p>
-            The hook is imported via a relative path from{' '}
-            <code>../copy-attribution/src</code> and appends extra text to the
-            copied selection.
+            This block uses scoped mode via <code>useCopyAttribution(ref)</code>.
+            Copied text here gets a source URL plus a scoped label.
+          </p>
+          <p>
+            Text copied anywhere else on the page uses{' '}
+            <code>useGlobalCopyAttribution()</code> and gets a simpler global
+            label.
           </p>
         </div>
         <button
