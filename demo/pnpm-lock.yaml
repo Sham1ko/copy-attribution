@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       copy-attribution:
-        specifier: link:copy-attribution
-        version: link:copy-attribution
+        specifier: ^0.0.2
+        version: 0.0.2(react@19.2.5)
       react:
         specifier: ^19.2.5
         version: 19.2.5
@@ -520,6 +520,11 @@ packages:
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
+
+  copy-attribution@0.0.2:
+    resolution: {integrity: sha512-aDMQwsqUj15ERuaCdPeU0m6nRvOj4pkR8AVAdVmdjW2WbZS3rQfIKa6g3zBlV2+Tb4gqoKK1FR/OmqTvBqjPGg==}
+    peerDependencies:
+      react: '>=18'
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -1517,6 +1522,10 @@ snapshots:
   concat-map@0.0.1: {}
 
   convert-source-map@2.0.0: {}
+
+  copy-attribution@0.0.2(react@19.2.5):
+    dependencies:
+      react: 19.2.5
 
   cross-spawn@7.0.6:
     dependencies:
