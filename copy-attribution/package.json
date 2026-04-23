@@ -1,6 +1,6 @@
 {
   "name": "copy-attribution",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A small React hook that appends attribution text to copied text across the page.",
   "repository": {
     "type": "git",
