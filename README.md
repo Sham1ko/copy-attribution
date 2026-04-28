@@ -4,6 +4,8 @@
 
 It is a browser-side solution built on the native `copy` event. The hook listens for copy events on `document`, reads the current selection with `window.getSelection()?.toString()`, prevents the default behavior, and writes modified plain text back into the clipboard.
 
+![NPM Downloads](https://img.shields.io/npm/dy/copy-attribution)
+
 ## Installation
 
 ```bash
